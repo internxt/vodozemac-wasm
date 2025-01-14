@@ -1,23 +1,12 @@
 # vodozemac Javascript bindings
 
-These are the Javascript bindings for [vodozemac]. Web based environments are
-supported as well as node based ones.
-
-## Build
-
-The bindings are build using [wasm-pack]. To build Node.js compatible bindings,
-simply run:
-
-```bash
-
-wasm-pack build --target nodejs --dev
-
+```diff 
+- !! non official vodozemac-js binding !!
 ```
 
-Check out the supported targets using:
+The [original megolm library](https://gitlab.matrix.org/matrix-org/olm/blob/master/docs/megolm.md) from matrix was deprecated and replaced with [vodozemac](https://github.com/matrix-org/vodozemac),
+an equivalent rust implemnentation of the Olm/Megolm protocol.
 
-```bash
+This packages provides vodozemac JS bindings using rust-wasm compilation.
 
-wasm-pack build --help
-
-```
+This is a fork from the original [vodozemac-bindings](https://github.com/matrix-org/vodozemac-bindings) repo which is no longer maintained.

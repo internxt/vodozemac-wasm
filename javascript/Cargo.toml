@@ -1,7 +1,13 @@
 [package]
-name = "vodozemac-javascript"
+name = "vodozemac-js-bindings"
 version = "0.8.1"
 edition = "2021"
+authors = [
+  "Anis Mekacher"
+]
+description = "vodozemac JS (wasm) bindings"
+license = "Apache-2.0"
+repository = "git+https://github.com/Mekacher-Anis/vodozemac-bindings"
 
 [lib]
 name = "vodozemac"

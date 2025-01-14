@@ -1,4 +1,14 @@
 {
+  "name": "vodozemac-js-bindings",
+  "description": "vodozemac JS (wasm) bindings",
+  "author": {
+    "name": "Anis Mekacher",
+    "url": "https://anisdev.dev"
+  },
+  "license": "Apache-2.0",
+  "repository": {
+    "url": "https://github.com/Mekacher-Anis/vodozemac-bindings"
+  },
   "devDependencies": {
     "jest": "^27.5.1"
   },
