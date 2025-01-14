@@ -2,3 +2,4 @@
 members = [
     "javascript",
 ]
+resolver = "2"
