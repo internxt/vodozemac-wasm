@@ -1,4 +1,4 @@
-const { Sas } = require('../pkg/vodozemac.js');
+const { Sas } = require('../dist/node/vodozemac.js');
 
 const EXTRA_INFO = "extra_info";
 const MESSAGE = "Test message"

@@ -1,4 +1,4 @@
-const { Account, Session, OlmMessage } = require('../pkg/vodozemac.js');
+const { Account, Session, OlmMessage } = require('../dist/node/vodozemac.js');
 
 const PICKLE_KEY = "DEFAULT_PICKLE_KEY_1234567890___";
 

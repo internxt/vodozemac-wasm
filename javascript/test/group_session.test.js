@@ -1,4 +1,4 @@
-const { GroupSession, InboundGroupSession } = require('../pkg/vodozemac.js');
+const { GroupSession, InboundGroupSession } = require('../dist/node/vodozemac.js');
 
 const PICKLE_KEY = "DEFAULT_PICKLE_KEY_1234567890___";
 

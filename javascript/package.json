@@ -9,12 +9,15 @@
   "repository": {
     "url": "https://github.com/Mekacher-Anis/vodozemac-bindings"
   },
-  "devDependencies": {
-    "jest": "^27.5.1"
-  },
+  "main": "dist/node/vodozemac.js",
+  "browser": "dist/web/vodozemac.js",
+  "files": [
+    "dist/browser",
+    "dist/node"
+  ],
   "scripts": {
-    "build-web": "wasm-pack build --target web",
-    "pretest": "wasm-pack build --target nodejs",
+    "build-browser": "wasm-pack build --target web -d dist/browser",
+    "build-node": "wasm-pack build --target nodejs -d dist/node",
     "test": "jest"
   }
 }

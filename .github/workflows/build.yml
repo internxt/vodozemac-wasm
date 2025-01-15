@@ -36,7 +36,7 @@ jobs:
 
       - name: Build
         working-directory: ./javascript
-        run: wasm-pack build --target web
+        run: npm run build-browser && npm run build-node
 
       - name: Create release
         working-directory: ./javascript
@@ -44,14 +44,14 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           tag: ${{ github.ref_name }}
         run: |
-          tar -czvf $tag.tar.gz -C pkg .
+          tar -czvf $tag.tar.gz ./
           gh release create "$tag" \
               --repo="$GITHUB_REPOSITORY" \
               --title="Release ${tag#v}" \
               --generate-notes \
               $tag.tar.gz
       - name: Publish to npmjs
-        working-directory: ./javascript/pkg
+        working-directory: ./javascript
         run: |
           echo -e "//registry.npmjs.org/:_authToken=$NODE_AUTH_TOKEN\nregistry=https://registry.npmjs.org/\nalways-auth=true" > .npmrc
           npm publish --provenance --access public
