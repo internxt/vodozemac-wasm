@@ -19,5 +19,5 @@ npm i vodozemac-js-bindings
 
 ## Example usage
 
-- [1-to-1 Olm Session](https://github.com/Mekacher-Anis/vodozemac-js-bindings/javascript/examples/1-to-1-olm.ts)
-- [Megolm group chat](https://github.com/Mekacher-Anis/vodozemac-js-bindings/javascript/examples/group-chat.ts)
+- [1-to-1 Olm Session](https://github.com/Mekacher-Anis/vodozemac-js-bindings/blob/main/javascript/examples/1-to-1-olm.ts)
+- [Megolm group chat](https://github.com/Mekacher-Anis/vodozemac-js-bindings/blob/main/javascript/examples/group-chat.ts)
