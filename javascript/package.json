@@ -1,6 +1,7 @@
 {
   "name": "vodozemac-js-bindings",
   "description": "vodozemac JS (wasm) bindings",
+  "version": "0.8.1",
   "author": {
     "name": "Anis Mekacher",
     "url": "https://anisdev.dev"
