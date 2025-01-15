@@ -7,7 +7,7 @@ authors = [
 ]
 description = "vodozemac JS (wasm) bindings"
 license = "Apache-2.0"
-repository = "git+https://github.com/Mekacher-Anis/vodozemac-bindings"
+repository = "https://github.com/Mekacher-Anis/vodozemac-bindings"
 
 [lib]
 name = "vodozemac"
