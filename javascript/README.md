@@ -10,3 +10,14 @@ an equivalent rust implemnentation of the Olm/Megolm protocol.
 This packages provides vodozemac JS bindings using rust-wasm compilation.
 
 This is a fork from the original [vodozemac-bindings](https://github.com/matrix-org/vodozemac-bindings) repo which is no longer maintained.
+
+## install
+
+```shell
+npm i vodozemac-js-bindings
+```
+
+## Example usage
+
+- [1-to-1 Olm Session](https://github.com/Mekacher-Anis/vodozemac-js-bindings/javascript/examples/1-to-1-olm.ts)
+- [Megolm group chat](https://github.com/Mekacher-Anis/vodozemac-js-bindings/javascript/examples/group-chat.ts)

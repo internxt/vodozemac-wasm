@@ -1,16 +1,18 @@
-# Unmaintained
+# vodozemac-js-bindings
+A fork of [vodozemac-bindings](https://github.com/matrix-org/vodozemac-bindings) which is no longer maintained.
 
-Please be aware that this project is no longer actively maintained. If you
-require any of the bindings from this repository, you will need to extract and
-update them on your own.
-
-Note: Some bindings have been relocated to separate repositories:
-
- * Python: https://github.com/matrix-nio/vodozemac-python
-
----
-
-# vodozemac-bindings
-Collection of language bindings for the [vodozemac] cryptographic library.
+Offers only the JS bindings.
 
 [vodozemac]: https://github.com/matrix-org/vodozemac
+
+## install
+
+```shell
+npm i vodozemac-js-bindings
+```
+
+
+## Example usage
+
+- [1-to-1 Olm Session](https://github.com/Mekacher-Anis/vodozemac-js-bindings/javascript/examples/1-to-1-olm.ts)
+- [Megolm group chat](https://github.com/Mekacher-Anis/vodozemac-js-bindings/javascript/examples/group-chat.ts)
