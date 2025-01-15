@@ -15,6 +15,9 @@
     "dist/browser",
     "dist/node"
   ],
+  "devDependencies": {
+    "jest": "^27.5.1"
+  },
   "scripts": {
     "build-browser": "wasm-pack build --target web -d dist/browser",
     "build-node": "wasm-pack build --target nodejs -d dist/node",
