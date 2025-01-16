@@ -8,7 +8,7 @@
   },
   "license": "Apache-2.0",
   "repository": {
-    "url": "https://github.com/Mekacher-Anis/vodozemac-bindings"
+    "url": "git+https://github.com/Mekacher-Anis/vodozemac-bindings"
   },
   "main": "dist/node/vodozemac.js",
   "browser": "dist/web/vodozemac.js",
