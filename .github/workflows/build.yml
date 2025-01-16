@@ -54,6 +54,6 @@ jobs:
         working-directory: ./javascript
         run: |
           echo -e "//registry.npmjs.org/:_authToken=$NODE_AUTH_TOKEN\nregistry=https://registry.npmjs.org/\nalways-auth=true" > .npmrc
-          npm publish --provenance --access public
+          npm publish --access public
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
