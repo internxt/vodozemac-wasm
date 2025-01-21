@@ -1,4 +1,4 @@
-# vodozemac-js-bindings
+# vodozemac-wasm-bindings
 A fork of [vodozemac-bindings](https://github.com/matrix-org/vodozemac-bindings) which is no longer maintained.
 
 Offers only the JS bindings.
@@ -8,11 +8,11 @@ Offers only the JS bindings.
 ## install
 
 ```shell
-npm i vodozemac-js-bindings
+npm i vodozemac-wasm-bindings
 ```
 
 
 ## Example usage
 
-- [1-to-1 Olm Session](https://github.com/Mekacher-Anis/vodozemac-js-bindings/blob/main/javascript/examples/1-to-1-olm.ts)
-- [Megolm group chat](https://github.com/Mekacher-Anis/vodozemac-js-bindings/blob/main/javascript/examples/group-chat.ts)
+- [1-to-1 Olm Session](https://github.com/Mekacher-Anis/vodozemac-wasm-bindings/blob/main/javascript/examples/1-to-1-olm.ts)
+- [Megolm group chat](https://github.com/Mekacher-Anis/vodozemac-wasm-bindings/blob/main/javascript/examples/group-chat.ts)

@@ -1,6 +1,7 @@
-import { GroupSession, OlmMessage } from "../";
-import { InboundGroupSession } from "../";
-import { Account, Session } from "../";
+import initAsync from "../dist";
+import { GroupSession, OlmMessage } from "../dist";
+import { InboundGroupSession } from "../dist";
+import { Account, Session } from "../dist";
 import { server, UserKeys } from "./dummy-server";
 
 /**
@@ -118,7 +119,9 @@ function decrypteAndImportGroupSession(
   return groupSession;
 }
 
-function main() {
+async function main() {
+  await initAsync();
+
   /** setup */
   const textEncoder = new TextEncoder();
   const textDecoder = new TextDecoder();
@@ -189,4 +192,4 @@ function main() {
   }
 }
 
-main();
+main().then();

@@ -1,4 +1,4 @@
-import { Account, Session } from "../";
+import initAsync, { Account, Session } from "../dist";
 import { server, UserKeys } from "./dummy-server";
 
 function setupOlmAccount(username: string): {
@@ -43,7 +43,9 @@ function setupOlmSession(
   return session;
 }
 
-function main() {
+async function main() {
+  await initAsync();
+
   /** setup */
   const textEncoder = new TextEncoder();
   const textDecoder = new TextDecoder();
@@ -110,4 +112,4 @@ function main() {
   console.log(`Alice received message "${decoded}" from bob`);
 }
 
-main();
+main().then();

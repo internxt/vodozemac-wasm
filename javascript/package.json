@@ -1,6 +1,6 @@
 {
-  "name": "vodozemac-js-bindings",
-  "description": "vodozemac JS (wasm) bindings",
+  "name": "vodozemac-wasm-bindings",
+  "description": "vodozemac wasm bindings",
   "version": "0.8.1",
   "author": {
     "name": "Anis Mekacher",
@@ -10,18 +10,15 @@
   "repository": {
     "url": "https://github.com/Mekacher-Anis/vodozemac-bindings"
   },
-  "main": "dist/node/vodozemac.js",
-  "browser": "dist/web/vodozemac.js",
+  "browser": "dist/vodozemac.js",
   "files": [
-    "dist/browser",
-    "dist/node"
+    "dist"
   ],
   "devDependencies": {
     "jest": "^27.5.1"
   },
   "scripts": {
-    "build-browser": "wasm-pack build --target web -d dist/browser",
-    "build-node": "wasm-pack build --target nodejs -d dist/node",
+    "build": "wasm-pack build --target web -d dist",
     "test": "jest"
   }
 }
