@@ -1,10 +1,11 @@
 use std::collections::HashMap;
 
+use vodozemac::base64_decode;
 use wasm_bindgen::prelude::*;
 
 use crate::error_to_js;
 
-use super::{session::Session, OlmMessage};
+use super::session::Session;
 
 #[wasm_bindgen]
 pub struct Account {
@@ -123,6 +124,10 @@ impl Account {
         Ok(serde_wasm_bindgen::to_value(&keys)?)
     }
 
+    pub fn forget_fallback_key(&mut self) -> bool {
+        self.inner.forget_fallback_key()
+    }
+
     pub fn generate_fallback_key(&mut self) {
         self.inner.generate_fallback_key();
     }
@@ -152,14 +157,16 @@ impl Account {
     pub fn create_inbound_session(
         &mut self,
         identity_key: &str,
-        message: &OlmMessage,
+        message_type: usize,
+        ciphertext: &str,
     ) -> Result<InboundCreationResult, JsValue> {
         let identity_key =
             vodozemac::Curve25519PublicKey::from_base64(identity_key).map_err(error_to_js)?;
 
+        let decoded = base64_decode(ciphertext).map_err(error_to_js)?;
+
         let message =
-            vodozemac::olm::OlmMessage::from_parts(message.message_type, &message.ciphertext)
-                .map_err(error_to_js)?;
+            vodozemac::olm::OlmMessage::from_parts(message_type, &decoded).map_err(error_to_js)?;
 
         if let vodozemac::olm::OlmMessage::PreKey(message) = message {
             Ok(self

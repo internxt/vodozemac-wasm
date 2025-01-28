@@ -1,8 +1,13 @@
+use vodozemac::{base64_decode, base64_encode};
 use wasm_bindgen::prelude::*;
 
 use crate::error_to_js;
 
-use super::OlmMessage;
+#[wasm_bindgen(getter_with_clone, setter)]
+pub struct EncryptedOlmMessage {
+    pub ciphertext: String,
+    pub message_type: usize,
+}
 
 #[wasm_bindgen]
 pub struct Session {
@@ -43,9 +48,13 @@ impl Session {
         self.inner.session_id()
     }
 
-    pub fn session_matches(&self, message: &OlmMessage) -> bool {
-        let message =
-            vodozemac::olm::OlmMessage::from_parts(message.message_type, &message.ciphertext);
+    pub fn session_matches(&self, message_type: usize, ciphertext: &str) -> bool {
+        let decoded = base64_decode(ciphertext);
+        if let Err(_err) = decoded {
+            return false;
+        }
+
+        let message = vodozemac::olm::OlmMessage::from_parts(message_type, &decoded.unwrap());
 
         match message {
             Ok(m) => {
@@ -59,22 +68,25 @@ impl Session {
         }
     }
 
-    pub fn encrypt(&mut self, plaintext: &[u8]) -> OlmMessage {
-        let message = self.inner.encrypt(plaintext);
+    pub fn encrypt(&mut self, plaintext: &[u8]) -> EncryptedOlmMessage {
+        let encrypted = self.inner.encrypt(plaintext);
+        let (message_type, ciphertext) = encrypted.to_parts();
 
-        let (message_type, ciphertext) = message.to_parts();
-
-        OlmMessage {
-            ciphertext,
+        EncryptedOlmMessage {
+            ciphertext: base64_encode(ciphertext),
             message_type,
         }
     }
 
-    pub fn decrypt(&mut self, message: &OlmMessage) -> Result<Vec<u8>, JsValue> {
+    pub fn decrypt(&mut self, message_type: usize, ciphertext: &str) -> Result<Vec<u8>, JsValue> {
+        let decoded: Vec<u8> = base64_decode(ciphertext).map_err(error_to_js)?;
         let message =
-            vodozemac::olm::OlmMessage::from_parts(message.message_type, &message.ciphertext)
-                .map_err(error_to_js)?;
+            vodozemac::olm::OlmMessage::from_parts(message_type, &decoded).map_err(error_to_js)?;
 
         Ok(self.inner.decrypt(&message).map_err(error_to_js)?)
+    }
+
+    pub fn has_received_message(&self) -> bool {
+        self.inner.has_received_message()
     }
 }

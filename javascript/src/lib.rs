@@ -4,30 +4,33 @@ mod account;
 mod group_sessions;
 mod sas;
 mod session;
-
+mod utilty;
 pub use account::Account;
 pub use sas::{EstablishedSas, Sas, SasBytes};
 pub use session::Session;
+pub use utilty::verify_signature;
 
+use vodozemac::base64_decode;
 use wasm_bindgen::prelude::*;
 
 fn error_to_js(error: impl std::error::Error) -> JsError {
     JsError::new(&error.to_string())
 }
 
-#[wasm_bindgen(getter_with_clone, setter)]
-pub struct OlmMessage {
-    pub ciphertext: Vec<u8>,
-    pub message_type: usize,
-}
+// Called when the Wasm module is instantiated
+#[wasm_bindgen(start)]
+fn main() -> Result<(), JsValue> {
+    // Use `web_sys`'s global `window` function to get a handle on the global
+    // window object.
+    let window = web_sys::window().expect("no global `window` exists");
+    let document = window.document().expect("should have a document on window");
+    let body = document.body().expect("document should have a body");
 
-#[wasm_bindgen]
-impl OlmMessage {
-    #[wasm_bindgen(constructor)]
-    pub fn new(message_type: usize, ciphertext: Vec<u8>) -> Self {
-        Self {
-            ciphertext,
-            message_type,
-        }
-    }
+    // Manufacture the element we're gonna append
+    let val = document.create_element("p")?;
+    val.set_inner_html("Hello from Rust!");
+
+    body.append_child(&val)?;
+
+    Ok(())
 }
