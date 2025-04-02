@@ -11,6 +11,12 @@ Offers only the JS bindings.
 npm i vodozemac-wasm-bindings
 ```
 
+## create new bindings
+
+```shell
+wasm-pack build --target web
+```
+
 
 ## Example usage
 
