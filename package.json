@@ -1,6 +1,12 @@
 {
     "name": "vodozemac-wasm",
     "version": "1.0.0",
-    "workspaces": ["javascript/pkg"]
+    "files": [
+      "javascript/pkg/vodozemac_bg.wasm",
+      "javascript/pkg/vodozemac.js",
+      "javascript/pkg/vodozemac.d.ts"
+    ],
+    "main": "javascript/pkg/vodozemac.js",
+    "types": "javascript/pkg/vodozemac.d.ts"
   }
   
