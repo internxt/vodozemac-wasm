@@ -6,6 +6,10 @@ use wasm_bindgen::prelude::*;
 use crate::error_to_js;
 
 use super::session::Session;
+use std::sync::Mutex;
+use once_cell::sync::Lazy;
+static SESSION_MUTEX: Lazy<Mutex<()>> = Lazy::new(|| Mutex::new(()));
+
 
 #[wasm_bindgen]
 pub struct Account {
@@ -141,6 +145,7 @@ impl Account {
         identity_key: &str,
         one_time_key: &str,
     ) -> Result<Session, JsValue> {
+        let _lock = SESSION_MUTEX.lock().map_err(|_| JsValue::from_str("Failed to acquire lock"))?;
         let identity_key =
             vodozemac::Curve25519PublicKey::from_base64(identity_key).map_err(error_to_js)?;
         let one_time_key =
@@ -160,6 +165,9 @@ impl Account {
         message_type: usize,
         ciphertext: &str,
     ) -> Result<InboundCreationResult, JsValue> {
+
+        let _lock = SESSION_MUTEX.lock().map_err(|_| JsValue::from_str("Failed to acquire lock"))?;
+    
         let identity_key =
             vodozemac::Curve25519PublicKey::from_base64(identity_key).map_err(error_to_js)?;
 

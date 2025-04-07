@@ -46,6 +46,7 @@ wasm-opt = ['-Oz', '-g']
 wasm-bindgen = "0.2.80"
 js-sys = "0.3.57"
 serde-wasm-bindgen = "0.4.2"
+once_cell = "1.21.3"
 
 
 [dependencies.web-sys]
